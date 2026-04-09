@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Inc">
+      <UniqueIdentifier>{4372fc1e-53a4-47ca-abf7-9f5db2e72699}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scr">
+      <UniqueIdentifier>{a79ee5e2-1882-47c0-a27a-aad0aef19f02}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Inc\Core.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\Common.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Scr\Precompiled.h">
+      <Filter>Scr</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Scr\Precompiled.cpp">
+      <Filter>Scr</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
