@@ -131,14 +131,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Inc\App.h" />
+    <ClInclude Include="Inc\AppState.h" />
     <ClInclude Include="Inc\Common.h" />
     <ClInclude Include="Inc\VisualEngine.h" />
     <ClInclude Include="Src\Precompiled.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Src\App.cpp" />
     <ClCompile Include="Src\Precompiled.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Src\VisualEngine.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Framework\Core\Core.vcxproj">
+      <Project>{08f6afec-d45c-489b-a354-f23e5e9d245d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\Input\Input.vcxproj">
+      <Project>{3629f01a-6fed-42eb-b308-e9f7f1346eaf}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

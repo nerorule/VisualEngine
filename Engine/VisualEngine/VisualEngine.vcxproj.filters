@@ -18,9 +18,21 @@
     <ClInclude Include="Src\Precompiled.h">
       <Filter>Scr</Filter>
     </ClInclude>
+    <ClInclude Include="Inc\App.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\AppState.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\Precompiled.cpp">
+      <Filter>Scr</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\App.cpp">
+      <Filter>Scr</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\VisualEngine.cpp">
       <Filter>Scr</Filter>
     </ClCompile>
   </ItemGroup>

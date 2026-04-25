@@ -138,12 +138,19 @@
   <ItemGroup>
     <ClInclude Include="Inc\Common.h" />
     <ClInclude Include="Inc\Core.h" />
+    <ClInclude Include="Inc\DebugUtil.h" />
+    <ClInclude Include="Inc\TimeUtil.h" />
+    <ClInclude Include="Inc\Window.h" />
+    <ClInclude Include="Inc\WindowMessageHandler.h" />
     <ClInclude Include="Scr\Precompiled.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Scr\Precompiled.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Scr\TimeUtil.cpp" />
+    <ClCompile Include="Scr\Window.cpp" />
+    <ClCompile Include="Scr\WindowMessageHandler.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
