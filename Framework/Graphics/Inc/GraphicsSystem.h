@@ -1,7 +1,8 @@
 #pragma once
 
+#include "Color.h"
 
-namespace VisualEngine
+namespace VisualEngine::Graphics
 {
 	class GraphicsSystem final
 	{
@@ -32,16 +33,15 @@ namespace VisualEngine
 		void ResetRenderTarget();
 		void ResetViewport();
 
-		// void SetClearColor()
-
+		void SetClearColor(const Color& color);
 		void SetVSync(bool vSync);
 
 		uint32_t GetBackBufferWidth() const;
 		uint32_t GetBackBufferHeight() const;
 		float GetBackBufferAspectRatio() const;
 
-		ID3D11Device* GetDevice() const;
-		ID3D11DeviceContext* GetContext() const;
+		ID3D11Device* GetDevice();
+		ID3D11DeviceContext* GetContext();
 	private:
 
 		static LRESULT CALLBACK GraphicsSystemMessageHandler(HWND win, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -58,7 +58,7 @@ namespace VisualEngine
 		DXGI_SWAP_CHAIN_DESC mSwapChainDesc{};
 		D3D11_VIEWPORT mViewport{};
 
-		// color mClearcolor = Color::Black;
+		Color mClearcolor = Colors::Black;
 		UINT mVSync = 1;
 
 	};

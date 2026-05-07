@@ -1,4 +1,6 @@
-﻿D:\VisualEngine\VisualEngine\Framework\Core\Core.vcxproj(73,5): warning MSB4011: "D:\VisualEngine\VisualEngine\VSProps\FrameworkLib.props" cannot be imported again. It was already imported at "D:\VisualEngine\VisualEngine\Framework\Core\Core.vcxproj (72,5)". This is most likely a build authoring error. This subsequent import will be ignored. 
-D:\VisualEngine\VisualEngine\Framework\Core\Core.vcxproj(74,5): warning MSB4011: "D:\VisualEngine\VisualEngine\VSProps\FrameworkLib.props" cannot be imported again. It was already imported at "D:\VisualEngine\VisualEngine\Framework\Core\Core.vcxproj (72,5)". This is most likely a build authoring error. This subsequent import will be ignored. 
+﻿  Precompiled.cpp
+  TimeUtil.cpp
   Window.cpp
+  WindowMessageHandler.cpp
+  Generating Code...
   Core.vcxproj -> D:\VisualEngine\VisualEngine\x64\Debug\Core.lib

@@ -1,0 +1,29 @@
+﻿  EMath.cpp
+D:\VisualEngine\VisualEngine\Framework\Math\Inc\Vector2.h(10,9): error C2039: 'array': is not a member of 'std'
+  (compiling source file '/Scr/EMath.cpp')
+      D:\VisualEngine\VisualEngine\Framework\Math\predefined C++ types (compiler internal)(357,11):
+      see declaration of 'std'
+  
+D:\VisualEngine\VisualEngine\Framework\Math\Inc\Vector2.h(10,14): error C2143: syntax error: missing ';' before '<'
+  (compiling source file '/Scr/EMath.cpp')
+  
+D:\VisualEngine\VisualEngine\Framework\Math\Inc\Vector2.h(10,9): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file '/Scr/EMath.cpp')
+  
+D:\VisualEngine\VisualEngine\Framework\Math\Inc\Vector2.h(10,26): error C2238: unexpected token(s) preceding ';'
+  (compiling source file '/Scr/EMath.cpp')
+  
+D:\VisualEngine\VisualEngine\Framework\Math\Inc\Vector3.h(10,9): error C2039: 'array': is not a member of 'std'
+  (compiling source file '/Scr/EMath.cpp')
+      D:\VisualEngine\VisualEngine\Framework\Math\predefined C++ types (compiler internal)(357,11):
+      see declaration of 'std'
+  
+D:\VisualEngine\VisualEngine\Framework\Math\Inc\Vector3.h(10,14): error C2143: syntax error: missing ';' before '<'
+  (compiling source file '/Scr/EMath.cpp')
+  
+D:\VisualEngine\VisualEngine\Framework\Math\Inc\Vector3.h(10,9): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+  (compiling source file '/Scr/EMath.cpp')
+  
+D:\VisualEngine\VisualEngine\Framework\Math\Inc\Vector3.h(10,26): error C2238: unexpected token(s) preceding ';'
+  (compiling source file '/Scr/EMath.cpp')
+  
