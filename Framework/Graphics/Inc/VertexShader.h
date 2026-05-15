@@ -6,7 +6,7 @@ namespace VisualEngine::Graphics
 	{
 	public:
 		template<class VertexType>
-		void Intialize(const std::filesystem::path& shaderPath)
+		void Initialize(const std::filesystem::path& shaderPath)
 		{
 			Initialize(shaderPath, VertexType::Format);
 		}

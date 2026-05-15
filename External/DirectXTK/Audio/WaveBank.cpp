@@ -268,7 +268,7 @@ WaveBank::WaveBank(AudioEngine* engine, const wchar_t* wbFileName)
     HRESULT hr = pImpl->Initialize(engine, wbFileName);
     if (FAILED(hr))
     {
-        DebugTrace("ERROR: WaveBank failed (%08X) to intialize from .xwb file \"%ls\"\n",
+        DebugTrace("ERROR: WaveBank failed (%08X) to Initialize from .xwb file \"%ls\"\n",
             static_cast<unsigned int>(hr), wbFileName);
         throw std::runtime_error("WaveBank");
     }

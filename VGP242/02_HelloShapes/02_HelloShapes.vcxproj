@@ -133,6 +133,11 @@
     <ClCompile Include="ShapeStates.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Engine\VisualEngine\VisualEngine.vcxproj">
+      <Project>{3b539194-0711-44f2-86a3-d60bd219c8b3}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

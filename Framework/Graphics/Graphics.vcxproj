@@ -131,8 +131,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Inc\Camera.h" />
     <ClInclude Include="Inc\Color.h" />
     <ClInclude Include="Inc\Common.h" />
+    <ClInclude Include="Inc\ConstantBuffer.h" />
     <ClInclude Include="Inc\Graphics.h" />
     <ClInclude Include="Inc\GraphicsSystem.h" />
     <ClInclude Include="Inc\MeshBuffer.h" />
@@ -142,6 +144,9 @@
     <ClInclude Include="Scr\Precompiled.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Scr\Camera.cpp" />
+    <ClCompile Include="Scr\ConstantBuffer.cpp" />
+    <ClCompile Include="Scr\DWMath.cpp" />
     <ClCompile Include="Scr\GraphicsSystem.cpp" />
     <ClCompile Include="Scr\MeshBuffer.cpp" />
     <ClCompile Include="Scr\PixelShader.cpp" />

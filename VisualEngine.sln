@@ -33,7 +33,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shaders", "Shaders", "{68DC
 	ProjectSection(SolutionItems) = preProject
 		Assets\Shaders\DoColor.fx = Assets\Shaders\DoColor.fx
 		Assets\Shaders\DoSomething.fx = Assets\Shaders\DoSomething.fx
+		Assets\Shaders\DoTransform.fx = Assets\Shaders\DoTransform.fx
 	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "03_HelloCube", "VGP242\03_HelloCube\03_HelloCube.vcxproj", "{BDF64416-C214-468A-9E10-95BAB9FE82A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -107,6 +110,14 @@ Global
 		{8C225F97-6928-40E3-9A79-C254C4AF2162}.Release|x64.Build.0 = Release|x64
 		{8C225F97-6928-40E3-9A79-C254C4AF2162}.Release|x86.ActiveCfg = Release|Win32
 		{8C225F97-6928-40E3-9A79-C254C4AF2162}.Release|x86.Build.0 = Release|Win32
+		{BDF64416-C214-468A-9E10-95BAB9FE82A0}.Debug|x64.ActiveCfg = Debug|x64
+		{BDF64416-C214-468A-9E10-95BAB9FE82A0}.Debug|x64.Build.0 = Debug|x64
+		{BDF64416-C214-468A-9E10-95BAB9FE82A0}.Debug|x86.ActiveCfg = Debug|Win32
+		{BDF64416-C214-468A-9E10-95BAB9FE82A0}.Debug|x86.Build.0 = Debug|Win32
+		{BDF64416-C214-468A-9E10-95BAB9FE82A0}.Release|x64.ActiveCfg = Release|x64
+		{BDF64416-C214-468A-9E10-95BAB9FE82A0}.Release|x64.Build.0 = Release|x64
+		{BDF64416-C214-468A-9E10-95BAB9FE82A0}.Release|x86.ActiveCfg = Release|Win32
+		{BDF64416-C214-468A-9E10-95BAB9FE82A0}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -121,6 +132,7 @@ Global
 		{007F097F-F63A-40A8-8132-0FAAC735A57A} = {327DF2BD-C5C1-4F3D-A451-D0F64E995D6F}
 		{8C225F97-6928-40E3-9A79-C254C4AF2162} = {793F6119-EA38-4DD8-AAB8-F19A932BCD23}
 		{68DCF1DC-4F5D-4067-A896-282104E6DDA7} = {CF00E3F9-73D1-440E-9AFA-8C0B643E679D}
+		{BDF64416-C214-468A-9E10-95BAB9FE82A0} = {793F6119-EA38-4DD8-AAB8-F19A932BCD23}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {212F451A-2DCC-461A-9894-40A07E8FAE3B}

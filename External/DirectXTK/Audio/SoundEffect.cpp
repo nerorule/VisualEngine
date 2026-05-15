@@ -399,7 +399,7 @@ SoundEffect::SoundEffect(AudioEngine* engine, const wchar_t* waveFileName)
 
     if (FAILED(hr))
     {
-        DebugTrace("ERROR: SoundEffect failed (%08X) to intialize from .wav file \"%ls\"\n",
+        DebugTrace("ERROR: SoundEffect failed (%08X) to Initialize from .wav file \"%ls\"\n",
             static_cast<unsigned int>(hr), waveFileName);
         throw std::runtime_error("SoundEffect");
     }
@@ -418,7 +418,7 @@ SoundEffect::SoundEffect(AudioEngine* engine, std::unique_ptr<uint8_t[]>& wavDat
 #endif
     if (FAILED(hr))
     {
-        DebugTrace("ERROR: SoundEffect failed (%08X) to intialize\n", static_cast<unsigned int>(hr));
+        DebugTrace("ERROR: SoundEffect failed (%08X) to Initialize\n", static_cast<unsigned int>(hr));
         throw std::runtime_error("SoundEffect");
     }
 }
@@ -437,7 +437,7 @@ SoundEffect::SoundEffect(AudioEngine* engine, std::unique_ptr<uint8_t[]>& wavDat
 #endif
     if (FAILED(hr))
     {
-        DebugTrace("ERROR: SoundEffect failed (%08X) to intialize\n", static_cast<unsigned int>(hr));
+        DebugTrace("ERROR: SoundEffect failed (%08X) to Initialize\n", static_cast<unsigned int>(hr));
         throw std::runtime_error("SoundEffect");
     }
 }
@@ -453,7 +453,7 @@ SoundEffect::SoundEffect(AudioEngine* engine, std::unique_ptr<uint8_t[]>& wavDat
     HRESULT hr = pImpl->Initialize(engine, wavData, wfx, startAudio, audioBytes, seekTable, seekCount, 0, 0);
     if (FAILED(hr))
     {
-        DebugTrace("ERROR: SoundEffect failed (%08X) to intialize\n", static_cast<unsigned int>(hr));
+        DebugTrace("ERROR: SoundEffect failed (%08X) to Initialize\n", static_cast<unsigned int>(hr));
         throw std::runtime_error("SoundEffect");
     }
 }

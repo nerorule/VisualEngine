@@ -8,7 +8,7 @@ using namespace VisualEngine::Input;
 class MainState : public AppState
 {
 public:
-	void Intialize() override
+	void Initialize() override
 	{
 		LOG("MainState: Initialize");
 	}
@@ -29,7 +29,7 @@ public:
 class GameState : public AppState
 {
 public:
-	void Intialize() override
+	void Initialize() override
 	{
 		LOG("GameState: Initialize");
 	}

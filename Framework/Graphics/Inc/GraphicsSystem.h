@@ -21,7 +21,7 @@ namespace VisualEngine::Graphics
 		GraphicsSystem& operator=(const GraphicsSystem&) = delete;
 		GraphicsSystem& operator=(const GraphicsSystem&&) = delete;
 
-		void Intialize(HWND window, bool fullScreen);
+		void Initialize(HWND window, bool fullScreen);
 		void Terminate();
 
 		void BeginRender();

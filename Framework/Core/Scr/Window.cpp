@@ -20,7 +20,7 @@ LRESULT CALLBACK WindowMessageHandler(HWND handle, UINT msg, WPARAM wParam, LPAR
 	return DefWindowProc(handle, msg, wParam, lParam);
 }
 
-void Window::Intialize(HINSTANCE instance, const std::wstring& appName, uint32_t width, uint32_t height)
+void Window::Initialize(HINSTANCE instance, const std::wstring& appName, uint32_t width, uint32_t height)
 {
 	mInstance = instance;
 	mAppName = appName;

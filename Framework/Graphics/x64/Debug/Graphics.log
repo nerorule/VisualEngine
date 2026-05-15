@@ -1,5 +1,5 @@
-﻿  GraphicsSystem.cpp
-D:\VisualEngine\VisualEngine\Framework\Graphics\Scr\GraphicsSystem.cpp(113,109): warning C4244: 'argument': conversion from 'float' to 'UINT8', possible loss of data
-  (compiling source file '/Scr/GraphicsSystem.cpp')
-  
-D:\VisualEngine\VisualEngine\Framework\Graphics\Scr\GraphicsSystem.cpp(28,1): error C4716: 'VisualEngine::Graphics::GraphicsSystem::GraphicsSystemMessageHandler': must return a value
+﻿  Camera.cpp
+  ConstantBuffer.cpp
+  DWMath.cpp
+D:\VisualEngine\VisualEngine\Framework\Graphics\Scr\ConstantBuffer.cpp(2,1): error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "Precompiled.h"' to your source?
+  Generating Code...

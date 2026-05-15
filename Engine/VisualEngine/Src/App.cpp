@@ -5,6 +5,7 @@
 using namespace VisualEngine;
 using namespace VisualEngine::Core;
 using namespace VisualEngine::Input;
+using namespace VisualEngine::Graphics;
 
 void App::Run(const AppConfig& config)
 {
@@ -13,17 +14,18 @@ void App::Run(const AppConfig& config)
 
 	// for all systems we build, initialize all singletons
 	Window myWindow;
-	myWindow.Intialize(
+	myWindow.Initialize(
 		GetModuleHandle(nullptr), 
 		config.appName, 
 		config.winWidth, 
 		config.winHeight);
 	auto handle = myWindow.GetWindowHandle();
 	InputSystem::StaticInitialize(handle);
+	GraphicsSystem::StaticInitialize(handle, config.fullScreen);
 
 	// after initializing singletons, initialize current state
 	ASSERT(mCurrentState != nullptr, "App: need an app state to run");
-	mCurrentState->Intialize();
+	mCurrentState->Initialize();
 
 	// run the application
 	InputSystem* input = InputSystem::Get();
@@ -43,7 +45,7 @@ void App::Run(const AppConfig& config)
 		{
 			mCurrentState->Terminate();
 			mCurrentState = std::exchange(mNextState, nullptr);
-			mCurrentState->Intialize();
+			mCurrentState->Initialize();
 		}
 
 		float deltaTime = TimeUtil::GetDeltaTime();
@@ -61,6 +63,7 @@ void App::Run(const AppConfig& config)
 	// terminate active state first
 	mCurrentState->Terminate();
 	// for all systems we build, terminate all singletons
+	GraphicsSystem::StaticTerminate();
 	InputSystem::StaticTerminate();
 	// close the app
 	myWindow.Terminate();

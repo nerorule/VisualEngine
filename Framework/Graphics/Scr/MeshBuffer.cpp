@@ -31,6 +31,8 @@ void MeshBuffer::SetTopology(Topology topology)
 void MeshBuffer::Render() const
 {
 	auto context = GraphicsSystem::Get()->GetContext();
+
+	context->IASetPrimitiveTopology(mTopology);
 	// Draw
 	UINT offset = 0;
 	context->IASetVertexBuffers(0, 1, &mVertexBuffer, &mVertexSize, &offset);
