@@ -9,3 +9,5 @@
 #include "VertexShader.h"
 #include "MeshBuffer.h"
 #include "PixelShader.h"
+#include "MeshTypes.h"
+#include "MeshBuilder.h"

@@ -45,5 +45,3 @@ void ShapeState::CreateShape()
 	mVertices.push_back({ { 0.5f, -0.5f, 0.0f}, {VisualEngine::Graphics::Colors::Blue } });
 }
 
-
-

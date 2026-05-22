@@ -8,8 +8,8 @@ void ShapeState::Initialize()
 {
 	// create shape
 	CreateShape();
-	mMeshBuffer.Initialize(mVertices.data(), sizeof(VertexPC), mVertices.size());
-
+	//mMeshBuffer.Initialize(mVertices.data(), sizeof(VertexPC), mVertices.size());
+	mMeshBuffer.Initialize(mMesh);
 	std::filesystem::path shaderPath = L"../../Assets/Shaders/DoColor.fx";
 	mVertexShader.Initialize<VertexPC>(shaderPath);
 	mPixelShader.Initialize(shaderPath);
