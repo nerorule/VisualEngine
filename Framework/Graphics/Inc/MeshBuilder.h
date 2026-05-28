@@ -8,17 +8,21 @@ namespace VisualEngine::Graphics
 	{
 	public:
 		// cube
-		static MeshP CreateVertexCubePC(float size, const Color& color);
+		static MeshPC CreateVertexCubePC(float size, const Color& color);
 		static MeshPC CreateCubePC(float size);
+		static MeshPX CreateCubePX(float size);
 
+		// rectangle
 		static MeshPC CreateBoxPC(float width, float height, float depth);
 		static MeshPC CreatePyramidPC(float size);
 
+		// plane
 		static MeshPC CreatePlanePC(int numRows, int numColums, float spacing, bool horizontal = true);
 
 		// cylinder
 		static MeshPC CreateCylinderPC(int slices, int rings);
 
+		// sphere
 		static MeshPC CreateSpherePC(int slices, int rings, float radius);
 	};
 }

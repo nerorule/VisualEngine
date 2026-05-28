@@ -22,6 +22,7 @@ void App::Run(const AppConfig& config)
 	auto handle = myWindow.GetWindowHandle();
 	InputSystem::StaticInitialize(handle);
 	GraphicsSystem::StaticInitialize(handle, config.fullScreen);
+	TextureManager::StaticInitialize(L"../../Assets/Textures");
 
 	// after initializing singletons, initialize current state
 	ASSERT(mCurrentState != nullptr, "App: need an app state to run");
@@ -65,6 +66,7 @@ void App::Run(const AppConfig& config)
 	// for all systems we build, terminate all singletons
 	GraphicsSystem::StaticTerminate();
 	InputSystem::StaticTerminate();
+	TextureManager::StaticTerminate();
 	// close the app
 	myWindow.Terminate();
 	LOG("App Ended");

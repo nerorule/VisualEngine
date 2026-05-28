@@ -51,23 +51,20 @@ void VertexShader::Initialize(const std::filesystem::path& shaderPath, uint32_t 
 	auto device = GraphicsSystem::Get()->GetDevice();
 
 	// vertex shader
-	std::filesystem::path shaderFile = L"../../Assets/Shaders/DoColor.fx";
-
 	DWORD shaderFlags = D3DCOMPILE_ENABLE_STRICTNESS | D3DCOMPILE_DEBUG;
-	ID3DBlob* shaderBlob = nullptr; // blob is a "block" of data taht acts like a pointer but also stores size of data
+	ID3DBlob* shaderBlob = nullptr;
 	ID3DBlob* errorBlob = nullptr;
 	HRESULT hr = D3DCompileFromFile(
-		shaderFile.c_str(),
+		shaderPath.c_str(),
 		nullptr,
 		D3D_COMPILE_STANDARD_FILE_INCLUDE,
 		"VS", "vs_5_0",
 		shaderFlags, 0,
 		&shaderBlob,
 		&errorBlob);
-
 	if (errorBlob != nullptr && errorBlob->GetBufferPointer() != nullptr)
 	{
-		LOG("s%", static_cast<const char*>(errorBlob->GetBufferPointer()));
+		LOG("%s", static_cast<const char*>(errorBlob->GetBufferPointer()));
 	}
 	ASSERT(SUCCEEDED(hr), "VertexShader: failed to compile vertex shader");
 
@@ -76,14 +73,13 @@ void VertexShader::Initialize(const std::filesystem::path& shaderPath, uint32_t 
 		shaderBlob->GetBufferSize(),
 		nullptr,
 		&mVertexShader);
-	ASSERT(SUCCEEDED(hr), "VertexShader: failed to compile vertex shader");
-
-	// ==================================================================
+	ASSERT(SUCCEEDED(hr), "VertexShader: failed to create vertex shader");
+	//=============================================================================
 
 	// State what the vertex variables are
-	std::vector<D3D11_INPUT_ELEMENT_DESC> vertexLayout;
-	vertexLayout.push_back({ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT });
-	vertexLayout.push_back({ "COLOR", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT });
+	std::vector<D3D11_INPUT_ELEMENT_DESC> vertexLayout = GetVertexLayout(format);
+	// vertexLayout.push_back({ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT });
+	// vertexLayout.push_back({ "COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT });
 
 	hr = device->CreateInputLayout(
 		vertexLayout.data(),
@@ -91,7 +87,7 @@ void VertexShader::Initialize(const std::filesystem::path& shaderPath, uint32_t 
 		shaderBlob->GetBufferPointer(),
 		shaderBlob->GetBufferSize(),
 		&mInputLayout);
-	ASSERT(SUCCEEDED(hr), "VertexShader: failed to create VERTEX INPUT");
+	ASSERT(SUCCEEDED(hr), "VertexShader: failed to create vertex input");
 	SafeRelease(shaderBlob);
 	SafeRelease(errorBlob);
 }

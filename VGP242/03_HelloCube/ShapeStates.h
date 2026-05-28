@@ -2,7 +2,7 @@
 
 #include <VisualEngine/Inc/VisualEngine.h>
 
-class ShapeState : public VisualEngine::AppState
+class ShapeStates : public VisualEngine::AppState
 {
 public:
 	void Initialize() override;
@@ -20,5 +20,7 @@ protected:
 	VisualEngine::Graphics::VertexShader mVertexShader;
 	VisualEngine::Graphics::PixelShader mPixelShader;
 
+	VisualEngine::Graphics::Camera mCamera;
+	VisualEngine::Graphics::ConstantBuffer mConstantBuffer;
 };
 

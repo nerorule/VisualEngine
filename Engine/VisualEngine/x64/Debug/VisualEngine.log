@@ -1,5 +1,6 @@
 ﻿  Precompiled.cpp
-  App.cpp
-  VisualEngine.cpp
-  Generating Code...
-  VisualEngine.vcxproj -> D:\VisualEngine\VisualEngine\x64\Debug\VisualEngine.lib
+D:\VisualEngine\VisualEngine\Framework\Graphics\Inc\TextureManager.h(22,19): error C2535: 'VisualEngine::Graphics::TextureManager &VisualEngine::Graphics::TextureManager::operator =(const VisualEngine::Graphics::TextureManager &)': member function already defined or declared
+  (compiling source file 'Src/Precompiled.cpp')
+      D:\VisualEngine\VisualEngine\Framework\Graphics\Inc\TextureManager.h(21,19):
+      see declaration of 'VisualEngine::Graphics::TextureManager::operator ='
+  

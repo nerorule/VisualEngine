@@ -1,0 +1,13 @@
+﻿  ShapeStates.cpp
+D:\VisualEngine\VisualEngine\Framework\Graphics\Inc\TextureManager.h(22,19): error C2535: 'VisualEngine::Graphics::TextureManager &VisualEngine::Graphics::TextureManager::operator =(const VisualEngine::Graphics::TextureManager &)': member function already defined or declared
+  (compiling source file 'ShapeStates.cpp')
+      D:\VisualEngine\VisualEngine\Framework\Graphics\Inc\TextureManager.h(21,19):
+      see declaration of 'VisualEngine::Graphics::TextureManager::operator ='
+  
+  WinMain.cpp
+D:\VisualEngine\VisualEngine\Framework\Graphics\Inc\TextureManager.h(22,19): error C2535: 'VisualEngine::Graphics::TextureManager &VisualEngine::Graphics::TextureManager::operator =(const VisualEngine::Graphics::TextureManager &)': member function already defined or declared
+  (compiling source file 'WinMain.cpp')
+      D:\VisualEngine\VisualEngine\Framework\Graphics\Inc\TextureManager.h(21,19):
+      see declaration of 'VisualEngine::Graphics::TextureManager::operator ='
+  
+  Generating Code...

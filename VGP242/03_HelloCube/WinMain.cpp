@@ -4,12 +4,12 @@
 int WINAPI WinMain(HINSTANCE instance, HINSTANCE, LPSTR, int)
 {
 	VisualEngine::AppConfig config;
-	config.appName = L"Hello Shapes";
+	config.appName = L"Hello Cube";
 
 	VisualEngine::App& myApp = VisualEngine::MainApp();
 
-	// needstates
-	myApp.AddState<ShapeState>("ShapeState");
+	// need states
+	myApp.AddState<ShapeStates>("ShapeStates");
 	myApp.Run(config);
 
 	return 0;

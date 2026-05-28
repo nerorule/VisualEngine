@@ -1,5 +1,31 @@
-﻿  Camera.cpp
-  ConstantBuffer.cpp
-  DWMath.cpp
-D:\VisualEngine\VisualEngine\Framework\Graphics\Scr\ConstantBuffer.cpp(2,1): error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "Precompiled.h"' to your source?
-  Generating Code...
+﻿  TextureManager.cpp
+D:\VisualEngine\VisualEngine\Framework\Graphics\Inc\TextureManager.h(22,19): error C2535: 'VisualEngine::Graphics::TextureManager &VisualEngine::Graphics::TextureManager::operator =(const VisualEngine::Graphics::TextureManager &)': member function already defined or declared
+  (compiling source file '/Scr/TextureManager.cpp')
+      D:\VisualEngine\VisualEngine\Framework\Graphics\Inc\TextureManager.h(21,19):
+      see declaration of 'VisualEngine::Graphics::TextureManager::operator ='
+  
+D:\VisualEngine\VisualEngine\Framework\Graphics\Scr\TextureManager.cpp(64,9): error C2440: 'return': cannot convert from 'nullptr' to 'const VisualEngine::Graphics::Texture &'
+  (compiling source file '/Scr/TextureManager.cpp')
+      D:\VisualEngine\VisualEngine\Framework\Graphics\Scr\TextureManager.cpp(64,9):
+      Reason: cannot convert from 'nullptr' to 'const VisualEngine::Graphics::Texture'
+      D:\VisualEngine\VisualEngine\Framework\Graphics\Scr\TextureManager.cpp(64,9):
+      'VisualEngine::Graphics::Texture::Texture': no overloaded function could convert all the argument types
+          D:\VisualEngine\VisualEngine\Framework\Graphics\Inc\Texture.h(19,3):
+          could be 'VisualEngine::Graphics::Texture::Texture(VisualEngine::Graphics::Texture &&) noexcept'
+              D:\VisualEngine\VisualEngine\Framework\Graphics\Scr\TextureManager.cpp(64,9):
+              'VisualEngine::Graphics::Texture::Texture(VisualEngine::Graphics::Texture &&) noexcept': cannot convert argument 1 from 'nullptr' to 'VisualEngine::Graphics::Texture &&'
+                  D:\VisualEngine\VisualEngine\Framework\Graphics\Scr\TextureManager.cpp(64,9):
+                  Reason: cannot convert from 'nullptr' to 'VisualEngine::Graphics::Texture'
+                  D:\VisualEngine\VisualEngine\Framework\Graphics\Scr\TextureManager.cpp(64,9):
+                  Conversion requires a second user-defined-conversion operator or constructor
+          D:\VisualEngine\VisualEngine\Framework\Graphics\Inc\Texture.h(15,3):
+          or       'VisualEngine::Graphics::Texture::Texture(const VisualEngine::Graphics::Texture &)'
+              D:\VisualEngine\VisualEngine\Framework\Graphics\Scr\TextureManager.cpp(64,9):
+              'VisualEngine::Graphics::Texture::Texture(const VisualEngine::Graphics::Texture &)': cannot convert argument 1 from 'nullptr' to 'const VisualEngine::Graphics::Texture &'
+                  D:\VisualEngine\VisualEngine\Framework\Graphics\Scr\TextureManager.cpp(64,9):
+                  Reason: cannot convert from 'nullptr' to 'const VisualEngine::Graphics::Texture'
+                  D:\VisualEngine\VisualEngine\Framework\Graphics\Scr\TextureManager.cpp(64,9):
+                  Conversion requires a second user-defined-conversion operator or constructor
+          D:\VisualEngine\VisualEngine\Framework\Graphics\Scr\TextureManager.cpp(64,9):
+          while trying to match the argument list '(nullptr)'
+  

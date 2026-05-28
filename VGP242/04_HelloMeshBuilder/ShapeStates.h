@@ -2,7 +2,7 @@
 
 #include <VisualEngine/Inc/VisualEngine.h>
 
-class ShapeState : public VisualEngine::AppState
+class ShapeStates : public VisualEngine::AppState
 {
 public:
 	void Initialize() override;
@@ -21,6 +21,4 @@ protected:
 
 	VisualEngine::Graphics::Camera mCamera;
 	VisualEngine::Graphics::ConstantBuffer mConstantBuffer;
-
 };
-

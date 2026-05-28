@@ -141,21 +141,27 @@
     <ClInclude Include="Inc\MeshBuilder.h" />
     <ClInclude Include="Inc\MeshTypes.h" />
     <ClInclude Include="Inc\PixelShader.h" />
+    <ClInclude Include="Inc\Sampler.h" />
+    <ClInclude Include="Inc\Texture.h" />
+    <ClInclude Include="Inc\TextureManager.h" />
     <ClInclude Include="Inc\VertexShader.h" />
     <ClInclude Include="Inc\VertexTypes.h" />
     <ClInclude Include="Scr\Precompiled.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Inc\MeshBuilder.cpp" />
     <ClCompile Include="Scr\Camera.cpp" />
     <ClCompile Include="Scr\ConstantBuffer.cpp" />
     <ClCompile Include="Scr\DWMath.cpp" />
     <ClCompile Include="Scr\GraphicsSystem.cpp" />
     <ClCompile Include="Scr\MeshBuffer.cpp" />
+    <ClCompile Include="Scr\MeshBuilder.cpp" />
     <ClCompile Include="Scr\PixelShader.cpp" />
     <ClCompile Include="Scr\Precompiled.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Scr\Sampler.cpp" />
+    <ClCompile Include="Scr\Texture.cpp" />
+    <ClCompile Include="Scr\TextureManager.cpp" />
     <ClCompile Include="Scr\VertexShader.cpp" />
   </ItemGroup>
   <ItemGroup>
