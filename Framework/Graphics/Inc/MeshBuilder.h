@@ -24,5 +24,9 @@ namespace VisualEngine::Graphics
 
 		// sphere
 		static MeshPC CreateSpherePC(int slices, int rings, float radius);
+		static MeshPX CreateSpherePX(int slices, int rings, float radius);
+
+		// skt sphere
+		static MeshPX CreateSkySpherePX(int slices, int rings, float radius);
 	};
 }

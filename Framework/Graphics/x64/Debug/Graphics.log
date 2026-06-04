@@ -1,4 +1,14 @@
-﻿  MeshBuffer.cpp
-  SimpleDraw.cpp
+﻿  Camera.cpp
+  ConstantBuffer.cpp
+  DebugUI.cpp
+  GraphicsSystem.cpp
+D:\VisualEngine\VisualEngine\Framework\Graphics\Scr\GraphicsSystem.cpp(116,109): warning C4244: 'argument': conversion from 'float' to 'UINT8', possible loss of data
+  (compiling source file '/Scr/GraphicsSystem.cpp')
+  
+  MeshBuffer.cpp
+  PixelShader.cpp
+  Sampler.cpp
+  Texture.cpp
+  VertexShader.cpp
   Generating Code...
   Graphics.vcxproj -> D:\VisualEngine\VisualEngine\x64\Debug\Graphics.lib

@@ -16,21 +16,22 @@ LRESULT CALLBACK GraphicsSystem::GraphicsSystemMessageHandler(HWND win, UINT msg
 	{
 		switch (msg)
 		{
-			case WM_SIZE:
-			{
-				const uint32_t width = static_cast<uint32_t>(LOWORD(lParam));
-				const uint32_t height = static_cast<uint32_t>(HIWORD(lParam));
-				sGraphicsSystem->Resize(width, height);
-				break;
-			}
+		case WM_SIZE:
+		{
+			const uint32_t width = static_cast<uint32_t>(LOWORD(lParam));
+			const uint32_t height = static_cast<uint32_t>(HIWORD(lParam));
+			sGraphicsSystem->Resize(width, height);
+			break;
+		}
 		}
 	}
 	return sWindowMessageHandler.ForwardMessage(win, msg, wParam, lParam);
 }
 
-void GraphicsSystem::StaticInitialize(HWND window, bool fullScreen)\
+// singleton setup/manage code
+void GraphicsSystem::StaticInitialize(HWND window, bool fullScreen)
 {
-	ASSERT(sGraphicsSystem == nullptr, "GraphicsSystem: is already initialized");
+	ASSERT(sGraphicsSystem == nullptr, "GraphicsSystem: is already initialized!");
 	sGraphicsSystem = std::make_unique<GraphicsSystem>();
 	sGraphicsSystem->Initialize(window, fullScreen);
 }
@@ -44,13 +45,15 @@ void GraphicsSystem::StaticTerminate()
 }
 GraphicsSystem* GraphicsSystem::Get()
 {
-	ASSERT(sGraphicsSystem != nullptr, "Graphics: is not initialized");
+	ASSERT(sGraphicsSystem != nullptr, "GraphicsSystem: is not initialized!");
 	return sGraphicsSystem.get();
 }
+
 GraphicsSystem::~GraphicsSystem()
 {
-	ASSERT(mD3DDevice == nullptr && mImmediateContext == nullptr, "GraphicsSystem: must be terminated");
+	ASSERT(mD3DDevice == nullptr && mImmediateContext == nullptr, "GraphicsSystem: must be terminated!");
 }
+
 void GraphicsSystem::Initialize(HWND window, bool fullScreen)
 {
 	RECT clientRect = {};
@@ -65,13 +68,14 @@ void GraphicsSystem::Initialize(HWND window, bool fullScreen)
 	swapChainDesc.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
 	swapChainDesc.BufferDesc.RefreshRate.Numerator = 60;
 	swapChainDesc.BufferDesc.RefreshRate.Denominator = 1;
+	swapChainDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
 	swapChainDesc.OutputWindow = window;
 	swapChainDesc.SampleDesc.Count = 1;
 	swapChainDesc.SampleDesc.Quality = 0;
 	swapChainDesc.Windowed = !fullScreen;
-	swapChainDesc.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
+	swapChainDesc.SwapEffect = DXGI_SWAP_EFFECT_FLIP_DISCARD;
 
-	const D3D_FEATURE_LEVEL featureLevel = D3D_FEATURE_LEVEL_11_1;
+	const D3D_FEATURE_LEVEL featureLevel = D3D_FEATURE_LEVEL_11_0;
 
 	HRESULT hr = D3D11CreateDeviceAndSwapChain(
 		nullptr,
@@ -87,7 +91,7 @@ void GraphicsSystem::Initialize(HWND window, bool fullScreen)
 		nullptr,
 		&mImmediateContext);
 
-	ASSERT(SUCCEEDED(hr), "GraphicsSystem: Failed to create device and swap chain!");
+	ASSERT(SUCCEEDED(hr), "GraphicsSystem: failed to initialized device or swap chain");
 	mSwapChain->GetDesc(&mSwapChainDesc);
 
 	Resize(GetBackBufferWidth(), GetBackBufferHeight());
@@ -97,8 +101,6 @@ void GraphicsSystem::Initialize(HWND window, bool fullScreen)
 
 void GraphicsSystem::Terminate()
 {
-	sWindowMessageHandler.Unhook();
-
 	SafeRelease(mDepthStencilView);
 	SafeRelease(mDepthStencilBuffer);
 	SafeRelease(mRenderTargetView);
@@ -110,20 +112,21 @@ void GraphicsSystem::Terminate()
 void GraphicsSystem::BeginRender()
 {
 	mImmediateContext->OMSetRenderTargets(1, &mRenderTargetView, mDepthStencilView);
-	mImmediateContext->ClearRenderTargetView(mRenderTargetView, (FLOAT*)(&mClearcolor));
+	mImmediateContext->ClearRenderTargetView(mRenderTargetView, (FLOAT*)(&mClearColor));
 	mImmediateContext->ClearDepthStencilView(mDepthStencilView, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0.0f);
 }
+
 void GraphicsSystem::EndRender()
 {
 	mSwapChain->Present(mVSync, 0);
 }
+
 void GraphicsSystem::ToggleFullScreen()
 {
-	BOOL fullscren;
-	mSwapChain->GetFullscreenState(&fullscren, nullptr);
-	mSwapChain->SetFullscreenState(!fullscren, nullptr);
+	BOOL fullScreen;
+	mSwapChain->GetFullscreenState(&fullScreen, nullptr);
+	mSwapChain->SetFullscreenState(!fullScreen, nullptr);
 }
-
 void GraphicsSystem::Resize(uint32_t width, uint32_t height)
 {
 	mImmediateContext->OMSetRenderTargets(0, nullptr, nullptr);
@@ -136,20 +139,18 @@ void GraphicsSystem::Resize(uint32_t width, uint32_t height)
 	if (width != GetBackBufferWidth() || height != GetBackBufferHeight())
 	{
 		hr = mSwapChain->ResizeBuffers(0, 0, 0, DXGI_FORMAT_UNKNOWN, 0);
-		ASSERT(SUCCEEDED(hr), "GraphicsSystem: Failed to resize swap chain buffers!");
+		ASSERT(SUCCEEDED(hr), "GraphicsSystem: failed to access swap chain view");
 		mSwapChain->GetDesc(&mSwapChainDesc);
 	}
 
 	ID3D11Texture2D* backBuffer = nullptr;
 	hr = mSwapChain->GetBuffer(0, IID_PPV_ARGS(&backBuffer));
-	ASSERT(SUCCEEDED(hr), "GraphicsSystem: Failed to get back buffer");
 
-	// Create render target view
 	hr = mD3DDevice->CreateRenderTargetView(backBuffer, nullptr, &mRenderTargetView);
 	SafeRelease(backBuffer);
-	ASSERT(SUCCEEDED(hr), "GraphicsSystem: Failed to create render target view");
+	ASSERT(SUCCEEDED(hr), "GraphicsSystem: failed to create render target");
 
-	// Create depth stencil buffer 
+	// create depth stencil buffer
 	D3D11_TEXTURE2D_DESC depthDesc = {};
 	depthDesc.Width = GetBackBufferWidth();
 	depthDesc.Height = GetBackBufferHeight();
@@ -163,7 +164,7 @@ void GraphicsSystem::Resize(uint32_t width, uint32_t height)
 	depthDesc.CPUAccessFlags = 0;
 	depthDesc.MiscFlags = 0;
 	hr = mD3DDevice->CreateTexture2D(&depthDesc, nullptr, &mDepthStencilBuffer);
-	ASSERT(SUCCEEDED(hr), "GraphicsSystem: Failed to create depth stencil buffer");
+	ASSERT(SUCCEEDED(hr), "GraphicsSystem: failed to create depth stencil buffer");
 
 	// create depth stencil view
 	D3D11_DEPTH_STENCIL_VIEW_DESC dsvDesc = {};
@@ -171,7 +172,7 @@ void GraphicsSystem::Resize(uint32_t width, uint32_t height)
 	dsvDesc.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
 	dsvDesc.Texture2D.MipSlice = 0;
 	hr = mD3DDevice->CreateDepthStencilView(mDepthStencilBuffer, &dsvDesc, &mDepthStencilView);
-	ASSERT(SUCCEEDED(hr), "GraphicsSystem: Failed to create depth stencil view");
+	ASSERT(SUCCEEDED(hr), "GraphicsSystem: failed to create depth stencil view");
 
 	ResetRenderTarget();
 
@@ -180,8 +181,8 @@ void GraphicsSystem::Resize(uint32_t width, uint32_t height)
 	mViewport.Height = static_cast<float>(GetBackBufferHeight());
 	mViewport.MinDepth = 0.0f;
 	mViewport.MaxDepth = 1.0f;
-	mViewport.TopLeftX = 0.0f;
-	mViewport.TopLeftY = 0.0f;
+	mViewport.TopLeftX = 0;
+	mViewport.TopLeftY = 0;
 	ResetViewport();
 }
 
@@ -197,12 +198,12 @@ void GraphicsSystem::ResetViewport()
 
 void GraphicsSystem::SetClearColor(const Color& color)
 {
-	mClearcolor = color;
+	mClearColor = color;
 }
 
-void GraphicsSystem::SetVSync(bool vsync)
+void GraphicsSystem::SetVSync(bool vSync)
 {
-	mVSync = vsync ? 1 : 0;
+	mVSync = vSync ? 1 : 0;
 }
 
 uint32_t GraphicsSystem::GetBackBufferWidth() const
