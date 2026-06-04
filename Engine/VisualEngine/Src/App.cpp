@@ -23,6 +23,8 @@ void App::Run(const AppConfig& config)
 	InputSystem::StaticInitialize(handle);
 	GraphicsSystem::StaticInitialize(handle, config.fullScreen);
 	TextureManager::StaticInitialize(L"../../Assets/Textures");
+	DebugUI::StaticInitialize(handle, true, false);
+	SimpleDraw::StaticInitialize(config.maxVertexCount);
 
 	// after initializing singletons, initialize current state
 	ASSERT(mCurrentState != nullptr, "App: need an app state to run");
@@ -60,6 +62,13 @@ void App::Run(const AppConfig& config)
 		mCurrentState->Update(deltaTime);
 
 		// render flow
+		GraphicsSystem* gs = GraphicsSystem::Get();
+		gs->BeginRender();
+			mCurrentState->Render();
+			DebugUI::BeginDraw();
+				mCurrentState->DebugUI();
+			DebugUI::EndDraw();
+			gs->EndRender();
 	}
 	// terminate active state first
 	mCurrentState->Terminate();
@@ -67,6 +76,8 @@ void App::Run(const AppConfig& config)
 	GraphicsSystem::StaticTerminate();
 	InputSystem::StaticTerminate();
 	TextureManager::StaticTerminate();
+	DebugUI::StaticTerminate();
+	SimpleDraw::StaticTerminate();
 	// close the app
 	myWindow.Terminate();
 	LOG("App Ended");

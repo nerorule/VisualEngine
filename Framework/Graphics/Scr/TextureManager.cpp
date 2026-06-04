@@ -54,12 +54,12 @@ TextureId TextureManager::LoadTexture(const std::filesystem::path& fileName, boo
 	return textureId;
 }
 
-const Texture& TextureManager::GetTexture(TextureId id) 
+const Texture* TextureManager::GetTexture(TextureId id) 
 {
 	auto iter = mInventory.find(id);
 	if (iter != mInventory.end())
 	{
-		return *iter->second.texture.get();
+		return iter->second.texture.get();
 	}
 	return nullptr;
 }

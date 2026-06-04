@@ -3,9 +3,17 @@ d:\visualengine\visualengine\x64\debug\graphics.pdb
 d:\visualengine\visualengine\x64\debug\graphics.idb
 d:\visualengine\visualengine\framework\graphics\x64\debug\precompiled.obj
 d:\visualengine\visualengine\framework\graphics\x64\debug\vertexshader.obj
+d:\visualengine\visualengine\framework\graphics\x64\debug\texturemanager.obj
+d:\visualengine\visualengine\framework\graphics\x64\debug\texture.obj
+d:\visualengine\visualengine\framework\graphics\x64\debug\sampler.obj
 d:\visualengine\visualengine\framework\graphics\x64\debug\pixelshader.obj
+d:\visualengine\visualengine\framework\graphics\x64\debug\meshbuilder.obj
 d:\visualengine\visualengine\framework\graphics\x64\debug\meshbuffer.obj
 d:\visualengine\visualengine\framework\graphics\x64\debug\graphicssystem.obj
+d:\visualengine\visualengine\framework\graphics\x64\debug\dwmath.obj
+d:\visualengine\visualengine\framework\graphics\x64\debug\debugui.obj
+d:\visualengine\visualengine\framework\graphics\x64\debug\constantbuffer.obj
+d:\visualengine\visualengine\framework\graphics\x64\debug\camera.obj
 d:\visualengine\visualengine\x64\debug\graphics.lib
 d:\visualengine\visualengine\framework\graphics\x64\debug\graphics.tlog\cl.command.1.tlog
 d:\visualengine\visualengine\framework\graphics\x64\debug\graphics.tlog\cl.items.tlog
