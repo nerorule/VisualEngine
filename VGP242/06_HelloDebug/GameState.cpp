@@ -44,7 +44,42 @@ Color gShapeColor = Colors::White;
 float gShapeSize = 10.0f;
 void GameState::Render()
 {
-	SimpleDraw::AddGroundPlane(10.0f, Colors::White);
+	switch (gCurrentShape)
+	{
+	case Shape::None:	break;
+	case Shape::AABB:
+	{
+		SimpleDraw::AddAABB({ 0.0f, 0.5f, 0.0f }, { 1.0f, 1.0f, 1.0f }, gShapeColor);
+	}
+	break;
+	case Shape::AABBFilled:
+	{
+		SimpleDraw::AddFilledAABB({ 0.0f, 0.5f, 0.0f }, { 1.0f, 1.0f, 1.0f }, gShapeColor);
+	}
+	break;
+	case Shape::Sphere:
+	{
+		SimpleDraw::AddSphere(32, 16, 1.0f, { 0.0f, 0.5f, 0.0f }, gShapeColor);
+	}
+	break;
+	case Shape::GroundPlane:
+	{
+		SimpleDraw::AddGroundPlane(gShapeSize, gShapeColor);
+	}
+	break;
+	case Shape::GroundCircle:
+	{
+		SimpleDraw::AddGroundCircle(32, gShapeSize * 0.5f, { 0.0f, 0.0f, 0.0f }, gShapeColor);
+	}
+	break;
+	case Shape::Transform:
+	{
+		SimpleDraw::AddTransform(Math::Matrix4::Translation({ 0.0f, 0.0f, 0.0f }));
+	}
+	break;
+	default:
+		break;
+	}
 	SimpleDraw::Render(mCamera);
 }
 //float myVariable = 0.0f;
@@ -66,6 +101,7 @@ void GameState::DebugUI()
 	{
 		gCurrentShape = (Shape)currentShape;
 	}
+	ImGui::DragFloat("PlaneSize", &gShapeSize, 0.1f, 0.0f, 10000.0f);
 	ImGui::End();
 }
 

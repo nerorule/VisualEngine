@@ -1,14 +1,8 @@
-﻿  Camera.cpp
-  ConstantBuffer.cpp
-  DebugUI.cpp
-  GraphicsSystem.cpp
-D:\VisualEngine\VisualEngine\Framework\Graphics\Scr\GraphicsSystem.cpp(116,109): warning C4244: 'argument': conversion from 'float' to 'UINT8', possible loss of data
-  (compiling source file '/Scr/GraphicsSystem.cpp')
+﻿  MeshBuilder.cpp
+D:\VisualEngine\VisualEngine\Framework\Graphics\Scr\MeshBuilder.cpp(240,58): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  (compiling source file '/Scr/MeshBuilder.cpp')
   
-  MeshBuffer.cpp
-  PixelShader.cpp
-  Sampler.cpp
-  Texture.cpp
-  VertexShader.cpp
-  Generating Code...
+D:\VisualEngine\VisualEngine\Framework\Graphics\Scr\MeshBuilder.cpp(240,18): warning C4244: 'initializing': conversion from 'double' to 'const float', possible loss of data
+  (compiling source file '/Scr/MeshBuilder.cpp')
+  
   Graphics.vcxproj -> D:\VisualEngine\VisualEngine\x64\Debug\Graphics.lib
