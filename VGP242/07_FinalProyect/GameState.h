@@ -19,9 +19,6 @@ private:
 		float orbitRotation,
 		float orbitDistance);
 
-	Math::Vector3 ComputePlanetPosition(float rotation, float orbitRotation, float orbitDistance);
-
-
 	float mPlanetOrbitDistance = 4.0f;
 
 	// planet selection & camera follow

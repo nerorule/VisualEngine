@@ -10,7 +10,7 @@ void GameState::Initialize()
 	mCamera.SetLookAt({ 0.0f, 0.0f, 0.0f });
 
 	// Create Shape
-	MeshPX space = MeshBuilder::CreateSkySpherePX(60, 60, 20.0f);
+	MeshPX space = MeshBuilder::CreateSkySpherePX(60, 60, 50.0f);
 	mSpaceMeshBuffer.Initialize(space);
 
 	Graphics::MeshPX sun = MeshBuilder::CreateSpherePX(30, 30, 1.0f);
@@ -155,23 +155,11 @@ void GameState::Update(float deltaTime)
 
 		mRotationAngles[i] += rotDelta;
 		mOrbitAngles[i] += orbitDelta;
-
-		// keep angles bounded
-		const float twoPi = Math::Constants::TwoPi;
-		mRotationAngles[i] = fmodf(mRotationAngles[i], twoPi);
-		mOrbitAngles[i] = fmodf(mOrbitAngles[i], twoPi);
 	}
-
 
 	// advance moon angles
 	mMoonOrbitAngle += mMoonOrbitSpeed * deltaTime;
 	mMoonRotationAngle += mMoonRotationSpeed * deltaTime;
-
-	// keep moon angles bounded
-	const float twoPi = Math::Constants::TwoPi;
-	mMoonOrbitAngle = fmodf(mMoonOrbitAngle, twoPi);
-	mMoonRotationAngle = fmodf(mMoonRotationAngle, twoPi);
-
 	
 	const float dEarth = 4.0f;
 	Math::Matrix4 earthLocalRot = Math::Matrix4::RotationY(mRotationAngles[Planet_Earth]);
@@ -406,17 +394,6 @@ Math::Vector3 GameState::RenderPlanet(const Graphics::MeshBuffer& mesh,
 	mesh.Render();
 
 	// return wolrd translation
-	return Math::GetTranslation(world);
-}
-
-Math::Vector3 GameState::ComputePlanetPosition(float rotation, float orbitRotation, float orbitDistance)
-{
-	// same math as RenderPlanet but without updating the GPU or rendering
-	Math::Matrix4 localRot = Math::Matrix4::RotationY(rotation);
-	Math::Matrix4 trans = Math::Matrix4::Translation(orbitDistance, 0.0f, 0.0f);
-	Math::Matrix4 orbitRot = Math::Matrix4::RotationY(orbitRotation);
-
-	Math::Matrix4 world = orbitRot * trans * localRot;
 	return Math::GetTranslation(world);
 }
 
