@@ -16,7 +16,7 @@ namespace VisualEngine::Graphics
 		void Initialize(const MeshType& mesh)
 		{
 			Initialize(mesh.vertices.data(),
-				static_cast<uint32_t>(sizeof(MeshType::VertexType)),
+				static_cast<uint32_t>(sizeof( MeshType::VertexType)),
 				static_cast<uint32_t>(mesh.vertices.size()),
 				mesh.indices.data(),
 				static_cast<uint32_t>(mesh.indices.size()));

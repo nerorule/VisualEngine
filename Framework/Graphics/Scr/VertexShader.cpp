@@ -101,7 +101,6 @@ void VertexShader::Terminate()
 void VertexShader::Bind()
 {
 	auto context = GraphicsSystem::Get()->GetContext();
-	// bind buffers
-	context->VSSetShader(mVertexShader, nullptr, 0);
 	context->IASetInputLayout(mInputLayout);
+	context->VSSetShader(mVertexShader, nullptr, 0);
 }

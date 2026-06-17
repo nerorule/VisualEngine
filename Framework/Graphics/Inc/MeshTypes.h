@@ -7,7 +7,7 @@ namespace VisualEngine::Graphics
 	template<class VertexT>
 	struct MeshBase
 	{
-		using Vertextype = VertexT;
+		using VertexType = VertexT;
 		std::vector<VertexT> vertices;
 		std::vector<uint32_t> indices;
 	};
