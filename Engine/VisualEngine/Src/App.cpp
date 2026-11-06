@@ -23,6 +23,7 @@ void App::Run(const AppConfig& config)
 	InputSystem::StaticInitialize(handle);
 	GraphicsSystem::StaticInitialize(handle, config.fullScreen);
 	TextureManager::StaticInitialize(L"../../Assets/Textures");
+	ModelManager::StaticInitialize(L"../../Assets/Models");
 	DebugUI::StaticInitialize(handle, true, false);
 	SimpleDraw::StaticInitialize(config.maxVertexCount);
 
@@ -75,6 +76,7 @@ void App::Run(const AppConfig& config)
 	// for all systems we build, terminate all singletons
 	GraphicsSystem::StaticTerminate();
 	InputSystem::StaticTerminate();
+	ModelManager::StaticTerminate();
 	TextureManager::StaticTerminate();
 	DebugUI::StaticTerminate();
 	SimpleDraw::StaticTerminate();

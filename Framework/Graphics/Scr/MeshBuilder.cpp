@@ -259,6 +259,79 @@ MeshPC MeshBuilder::CreatePlanePC(int numRows, int numColumns, float spacing, bo
 	return mesh;
 }
 
+MeshPX MeshBuilder::CreatePlanePX(int numRows, int numColumns, float spacing, bool horizontal)
+{
+	MeshPX mesh;
+	int index = rand() % 100;
+	const float hpw = static_cast<float>(numColumns) * spacing * 0.5f;
+	const float hph = static_cast<float>(numRows) * spacing * 0.5;
+	const float uInc = 1.0f / static_cast<float>(numColumns);
+	const float vInc = -1.0f / static_cast<float>(numRows);
+
+	float w = -hpw;
+	float h = -hph;
+	float u = 0.0f;
+	float v = 1.0f;
+
+	for (int r = 0; r <= numRows; ++r)
+	{
+		for (int c = 0; c <= numColumns; ++c)
+		{
+			// horizontal is x/z and not horizontal (vertical) is x/y
+			Math::Vector3 position = (horizontal) ? Math::Vector3{ w, 0.0f, h } : Math::Vector3{ w, h, 0.0f };
+			mesh.vertices.push_back({ position, { u, v } });
+			w += spacing;
+			u += uInc;
+		}
+		w = -hpw;
+		h += spacing;
+		v += vInc;
+		u = 0.0f;
+	}
+
+	CreatePlaneIndices(mesh.indices, numRows, numColumns);
+
+	return mesh;
+}
+
+Mesh MeshBuilder::CreatePlane(int numRows, int numColumns, float spacing, bool horizontal)
+{
+	Mesh mesh;
+	int index = rand() % 100;
+	const float hpw = static_cast<float>(numColumns) * spacing * 0.5f;
+	const float hph = static_cast<float>(numRows) * spacing * 0.5;
+	const float uInc = 1.0f / static_cast<float>(numColumns);
+	const float vInc = -1.0f / static_cast<float>(numRows);
+
+	const Math::Vector3 norm = (horizontal) ? Math::Vector3::YAxis : -Math::Vector3::ZAxis;
+	const Math::Vector3 tang = Math::Vector3::XAxis;
+
+	float w = -hpw;
+	float h = -hph;
+	float u = 0.0f;
+	float v = 1.0f;
+
+	for (int r = 0; r <= numRows; ++r)
+	{
+		for (int c = 0; c <= numColumns; ++c)
+		{
+			// horizontal is x/z and not horizontal (vertical) is x/y
+			Math::Vector3 position = (horizontal) ? Math::Vector3{ w, 0.0f, h } : Math::Vector3{ w, h, 0.0f };
+			mesh.vertices.push_back({ position, norm, tang, { u, v } });
+			w += spacing;
+			u += uInc;
+		}
+		w = -hpw;
+		h += spacing;
+		v += vInc;
+		u = 0.0f;
+	}
+
+	CreatePlaneIndices(mesh.indices, numRows, numColumns);
+
+	return mesh;
+}
+
 MeshPC MeshBuilder::CreateCylinderPC(int slices, int rings)
 {
 	MeshPC mesh;
@@ -391,6 +464,46 @@ MeshPX MeshBuilder::CreateSpherePX(int slices, int rings, float radius)
 	return mesh;
 }
 
+Mesh MeshBuilder::CreateSphere(int slices, int rings, float radius)
+{
+	Mesh mesh;
+	int index = rand() % 100;
+
+	float vertRotation = Math::Constants::Pi / static_cast<float>(rings);
+	float horizRotation = Math::Constants::TwoPi / static_cast<float>(slices);
+
+	float uStep = 1.0f / static_cast<float>(slices);
+	float vStep = 1.0f / static_cast<float>(rings);
+
+	for (int r = 0; r <= rings; ++r)
+	{
+		float rF = static_cast<float>(r);
+		float phi = rF * vertRotation;
+		for (int s = 0; s <= slices; ++s)
+		{
+			float sF = static_cast<float>(s);
+			float rotation = sF * horizRotation;
+
+			float u = uStep * sF;
+			float v = vStep * rF;
+			Math::Vector3 pos = {
+				radius * sin(rotation) * sin(phi),     // x
+				radius * cos(phi),                     // y
+				radius * cos(rotation) * sin(phi)  // z
+			};
+			Math::Vector3 norm = Math::Normalize(pos);
+			Math::Vector3 tang = (abs(Math::Dot(norm, Math::Vector3::YAxis))) < 0.999f ?
+				Math::Normalize({ -pos.z, 0.0f, pos.x }) : Math::Vector3::XAxis;
+			mesh.vertices.push_back({ pos, norm, tang, { u, v } });
+		}
+	}
+
+	CreatePlaneIndices(mesh.indices, rings, slices);
+
+	return mesh;
+}
+
+
 MeshPX MeshBuilder::CreateSkySpherePX(int slices, int rings, float radius)
 {
 	MeshPX mesh;
@@ -422,6 +535,19 @@ MeshPX MeshBuilder::CreateSkySpherePX(int slices, int rings, float radius)
 	}
 
 	CreatePlaneIndices(mesh.indices, rings, slices);
+
+	return mesh;
+}
+
+MeshPX MeshBuilder::CreateScreenQuadPX()
+{
+	MeshPX mesh;
+
+	mesh.vertices.push_back({ { -1.0f,  1.0f, 0.0f }, { 0.0f, 0.0f } });
+	mesh.vertices.push_back({ {  1.0f,  1.0f, 0.0f }, { 1.0f, 0.0f } });
+	mesh.vertices.push_back({ {  1.0f, -1.0f, 0.0f }, { 1.0f, 1.0f } });
+	mesh.vertices.push_back({ { -1.0f, -1.0f, 0.0f }, { 0.0f, 1.0f } });
+	mesh.indices = { 0, 1, 2, 0, 2, 3 };
 
 	return mesh;
 }
