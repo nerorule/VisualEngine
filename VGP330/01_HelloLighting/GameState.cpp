@@ -25,7 +25,19 @@ void GameState::Initialize()
 	mRenderObject.normMapId = tm->LoadTexture("earth_normal.jpg");
 	mRenderObject.bumpMapId = tm->LoadTexture("earth_bump.jpg");
 
+	Mesh mesh2 = MeshBuilder::CreateSphere(30, 30, 1.0f);
+	mRenderObject2.meshBuffer.Initialize(mesh2);
+	TextureManager* tm2 = TextureManager::Get();
+	mRenderObject2.diffuseMapId = tm2->LoadTexture("raw_wooden_floor_diff.jpg");
+	mRenderObject2.normMapId = tm2->LoadTexture("raw_wooden_floor_nor.jpg");
+	mRenderObject2.transform.position = { 3.0f, 0.0f, 0.0f };
 
+	Mesh mesh3 = MeshBuilder::CreateSphere(30, 30, 1.0f);
+	mRenderObject3.meshBuffer.Initialize(mesh3);
+	TextureManager* tm3 = TextureManager::Get();
+	mRenderObject3.diffuseMapId = tm3->LoadTexture("rock_wall_diff.jpg");
+	mRenderObject3.normMapId = tm3->LoadTexture("rock_wall_nor.jpg");
+	mRenderObject3.transform.position = { -3.0f, 0.0f, 0.0f };
 
 	// set up the effect
 	std::filesystem::path shaderPath = L"../../Assets/Shaders/Standard.fx";
@@ -51,6 +63,8 @@ void GameState::Terminate()
 	mStandardEffectCel.Terminate();
 	mStanderdEffect.Terminate();
 	mRenderObject.Terminate();
+	mRenderObject2.Terminate();
+	mRenderObject3.Terminate();
 }
 
 void GameState::Update(float deltaTime)
@@ -67,12 +81,16 @@ void GameState::Render()
 	{
 		mStandardEffectCel.Begin();
 			mStandardEffectCel.Render(mRenderObject);
+			mStandardEffectCel.Render(mRenderObject2);
+			mStandardEffectCel.Render(mRenderObject3);
 		mStandardEffectCel.End();
 	}
 	else
 	{
 		mStanderdEffect.Begin();
 			mStanderdEffect.Render(mRenderObject);
+			mStanderdEffect.Render(mRenderObject2);
+			mStanderdEffect.Render(mRenderObject3);
 		mStanderdEffect.End();
 	}
 
@@ -80,6 +98,8 @@ void GameState::Render()
 	mRenderTarget.BeginRender(); // tell gpu to render here
 	mStanderdEffect.Begin();
 		mStanderdEffect.Render(mRenderObject);
+		mStanderdEffect.Render(mRenderObject2);
+		mStanderdEffect.Render(mRenderObject3);
 	mStanderdEffect.End();
 	mRenderTarget.EndRender(); // tell gpu to render window again
 }

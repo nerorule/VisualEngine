@@ -20,5 +20,7 @@ private:
 	VisualEngine::Graphics::RenderTarget mRenderTarget;
 
 	VisualEngine::Graphics::RenderObject mRenderObject;
+	VisualEngine::Graphics::RenderObject mRenderObject2;
+	VisualEngine::Graphics::RenderObject mRenderObject3;
 	bool mUseCellShading = false;
 };
