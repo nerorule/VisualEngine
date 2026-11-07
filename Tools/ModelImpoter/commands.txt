@@ -1,0 +1,3 @@
+-scale 0.01 ../../Assets/Models/Character01/Thicc.fbx ../../Assets/Models/Character01/Thicc.model
+-scale 0.01 ../../Assets/Models/Character02/Thicc2.fbx ../../Assets/Models/Character02/Thicc2.model
+-scale 0.01 ../../Assets/Models/Character03/Thicc3.fbx ../../Assets/Models/Character03/Thicc3.model

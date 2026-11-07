@@ -1,7 +1,4 @@
-﻿  main.cpp
-D:\VisualEngine\VisualEngine\Tools\ModelImpoter\main.cpp(35,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\VisualEngine\VisualEngine\Tools\ModelImpoter\main.cpp(113,4): warning C4018: '<': signed/unsigned mismatch
-  ModelImpoter.vcxproj -> D:\VisualEngine\VisualEngine\x64\Debug\ModelImpoter.exe
+﻿  ModelImpoter.vcxproj -> D:\VisualEngine\VisualEngine\x64\Debug\ModelImpoter.exe
   D:\VisualEngine\VisualEngine\External\assimp-5.2.5\bin\assimp-vc143-mt.dll
   D:\VisualEngine\VisualEngine\External\assimp-5.2.5\bin\assimp-vc143-mtd.dll
           2 file(s) copied.

@@ -16,5 +16,8 @@ private:
 	VisualEngine::Graphics::Camera mCamera;
 	VisualEngine::Graphics::DirectionalLight mDirectionalLight;
 	VisualEngine::Graphics::StandardEffect mStandardEffect;
+
 	VisualEngine::Graphics::RenderGroup mCharacter;
+	VisualEngine::Graphics::RenderGroup mCharacter2;
+	VisualEngine::Graphics::RenderGroup mCharacter3;
 };
