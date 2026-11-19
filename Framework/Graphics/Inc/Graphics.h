@@ -11,6 +11,7 @@
 #include "Sampler.h"
 #include "SimpleDraw.h"
 #include "StandardEffect.h"
+#include "ShadowEffect.h"
 #include "Material.h"
 #include "MeshTypes.h"
 #include "MeshBuilder.h"

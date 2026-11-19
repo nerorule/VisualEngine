@@ -12,6 +12,7 @@ namespace VisualEngine::Graphics
 	class Camera;
 	class RenderObject;
 	class RenderGroup;
+	class Texture;
 
 
 	class StandardEffect final
@@ -30,11 +31,14 @@ namespace VisualEngine::Graphics
 
 		void SetCamera(const Camera& camera);
 		void SetDirectionalLight(const DirectionalLight& directionalLight);
+		void SetShadowMap(const Texture& shadowMap);
+		void SetLightCamera(const Camera& lightCamera);
 	private:
 		struct TransfromData
 		{
 			Math::Matrix4 wvp;  // world view projection for ndc space
 			Math::Matrix4 world; // world location
+			Math::Matrix4 lwvp;  // world view projection from the light perspective
 			Math::Vector3 viewPosition;  //position of camera
 			float padding = 0.0f; // added to keep 16 bytes aligned
 		};
@@ -45,8 +49,10 @@ namespace VisualEngine::Graphics
 			int useSpecMap = 1;
 			int useNormMap = 1;
 			int useBumpMap = 1;
+			int useShadowMap = 1;
 			float bumpWeight = 0.1f;
-			float padding[3] = { 0.0f };
+			float depthBias = 0.00003f;
+			float padding =  0.0f;
 		};
 
 		using TransformBuffer = TypedConstantBuffer<TransfromData>;
@@ -67,6 +73,8 @@ namespace VisualEngine::Graphics
 
 		const Camera* mCamera = nullptr;
 		const DirectionalLight* mDirectionalLight = nullptr;
+		const Texture* mShadowMap = nullptr;
+		const Camera* mLightCamera = nullptr;
 		SettingsData mSettingsData;
 	};
 }

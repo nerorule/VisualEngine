@@ -1,0 +1,25 @@
+#pragma once
+
+#include <VisualEngine/Inc/VisualEngine.h>
+
+class GameState : public VisualEngine::AppState
+{
+public:
+	void Initialize() override;
+	void Terminate() override;
+	void Update(float deltaTime) override;
+	void Render() override;
+	void DebugUI() override;
+private:
+	void UpdateCamera(float deltaTime);
+
+	VisualEngine::Graphics::Camera mCamera;
+	VisualEngine::Graphics::DirectionalLight mDirectionalLight;
+	VisualEngine::Graphics::StandardEffect mStandardEffect;
+	VisualEngine::Graphics::RenderGroup mCharacter;
+	VisualEngine::Graphics::RenderGroup mCharacter2;
+	VisualEngine::Graphics::RenderGroup mCharacter3;
+	VisualEngine::Graphics::RenderObject mGround;
+
+	VisualEngine::Graphics::ShadowEffect mShadowEffect;
+};

@@ -1,3 +1,4 @@
+D:\VisualEngine\VisualEngine\Framework\Graphics\Scr\BlendState.cpp;D:\VisualEngine\VisualEngine\Framework\Graphics\x64\Debug\BlendState.obj
 D:\VisualEngine\VisualEngine\Framework\Graphics\Scr\Camera.cpp;D:\VisualEngine\VisualEngine\Framework\Graphics\x64\Debug\Camera.obj
 D:\VisualEngine\VisualEngine\Framework\Graphics\Scr\ConstantBuffer.cpp;D:\VisualEngine\VisualEngine\Framework\Graphics\x64\Debug\ConstantBuffer.obj
 D:\VisualEngine\VisualEngine\Framework\Graphics\Scr\DebugUI.cpp;D:\VisualEngine\VisualEngine\Framework\Graphics\x64\Debug\DebugUI.obj
@@ -12,6 +13,7 @@ D:\VisualEngine\VisualEngine\Framework\Graphics\Scr\Precompiled.cpp;D:\VisualEng
 D:\VisualEngine\VisualEngine\Framework\Graphics\Scr\RenderObject.cpp;D:\VisualEngine\VisualEngine\Framework\Graphics\x64\Debug\RenderObject.obj
 D:\VisualEngine\VisualEngine\Framework\Graphics\Scr\RenderTarget.cpp;D:\VisualEngine\VisualEngine\Framework\Graphics\x64\Debug\RenderTarget.obj
 D:\VisualEngine\VisualEngine\Framework\Graphics\Scr\Sampler.cpp;D:\VisualEngine\VisualEngine\Framework\Graphics\x64\Debug\Sampler.obj
+D:\VisualEngine\VisualEngine\Framework\Graphics\Scr\ShadowEffect.cpp;D:\VisualEngine\VisualEngine\Framework\Graphics\x64\Debug\ShadowEffect.obj
 D:\VisualEngine\VisualEngine\Framework\Graphics\Scr\SimpleDraw.cpp;D:\VisualEngine\VisualEngine\Framework\Graphics\x64\Debug\SimpleDraw.obj
 D:\VisualEngine\VisualEngine\Framework\Graphics\Scr\StandardEffect.cpp;D:\VisualEngine\VisualEngine\Framework\Graphics\x64\Debug\StandardEffect.obj
 D:\VisualEngine\VisualEngine\Framework\Graphics\Scr\Texture.cpp;D:\VisualEngine\VisualEngine\Framework\Graphics\x64\Debug\Texture.obj
