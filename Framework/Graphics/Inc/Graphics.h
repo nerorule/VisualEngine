@@ -25,6 +25,8 @@
 #include "RenderTarget.h"
 #include "Transform.h"
 #include "Texture.h"
+#include "Terrain.h"
+#include "TerrainEffect.h"
 #include "TextureManager.h"
 #include "VertexTypes.h"
 #include "VertexShader.h"
